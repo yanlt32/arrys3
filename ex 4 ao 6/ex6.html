@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Document</title>
+</head>
+
+<body> <h1>Calculadora de Gastos Mensais</h1> <p>Insira seus gastos diários:</p> <input type="number"
+        id="gastoDiario" placeholder="Insira um gasto"> <button onclick="adicionarGasto()">Adicionar Gasto</button>
+ <h2>Lista de Gastos Diários</h2> <ul id="listaGastos"></ul> <button onclick="calcularTotal()">Calcular
+        Total</button> <p>Total de Gastos do Mês: R$ <span id="totalGastos">0</span></p>
+    <script> const gastos = []; function adicionarGasto() { const inputGasto = document.getElementById("gastoDiario"); const novoGasto = parseFloat(inputGasto.value); if (!isNaN(novoGasto)) { gastos.push(novoGasto); inputGasto.value = ""; exibirListaGastos(); } } function exibirListaGastos() { const listaGastos = document.getElementById("listaGastos"); listaGastos.innerHTML = ""; for (let i = 0; i < gastos.length; i++) { const gastoItem = document.createElement("li"); gastoItem.textContent = Dia ${ i + 1 }: R$ ${ gastos[i].toFixed(2) }; listaGastos.appendChild(gastoItem); } } function calcularTotal() { const totalGastosElement = document.getElementById("totalGastos"); const totalGastos = gastos.reduce((accumulator, currentValue) => accumulator + currentValue, 0); totalGastosElement.textContent = totalGastos.toFixed(2); }    </script>
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>   
+    <meta charset="UTF-8">   
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    <title>Document</title>    <style>
+        .card {
+            border: 1px solid black;
+            width: 100px;
+            height: 150px;
+            margin: 5px;
+            padding: 5px;
+            display: inline-block;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>    <h1>Baralho de Cartas</h1>    <h2>Mãos dos Jogadores</h2>    <div id="playerHands"></div>   
+    <script>        // Definindo os valores e naipes das cartas        const valores = ["Ás", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Valete", "Dama", "Rei"];        const naipes = ["Copas", "Espadas", "Ouros", "Paus"];        // Criando o baralho        const baralho = [];        for (const valor of valores) {            for (const naipe of naipes) {                baralho.push({ valor, naipe });            }        }        // Embaralhando o baralho        for (let i = baralho.length - 1; i > 0; i--) {            const j = Math.floor(Math.random() * (i + 1));            [baralho[i], baralho[j]] = [baralho[j], baralho[i]];        }        // Número de jogadores        const numJogadores = 4;        // Distribuindo cartas para cada jogador        const maos = [];        for (let i = 0; i < numJogadores; i++) {            maos.push([]);        }        for (let i = 0; i < 5; i++) {            for (let jogador = 0; jogador < numJogadores; jogador++) {                const carta = baralho.pop();                maos[jogador].push(carta);            }        }        // Exibindo as mãos dos jogadores        const playerHandsElement = document.getElementById("playerHands");        for (let jogador = 0; jogador < numJogadores; jogador++) {            const handElement = document.createElement("div");            handElement.classList.add("hand");            handElement.innerHTML = <h3>Jogador ${jogador + 1}</h3>;            for (const carta of maos[jogador]) {                const cardElement = document.createElement("div");                cardElement.classList.add("card");                cardElement.textContent = ${carta.valor} de ${carta.naipe};                handElement.appendChild(cardElement);            }            playerHandsElement.appendChild(handElement);        }    </script>
+</body>
+
+</html>

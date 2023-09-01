@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>   
+    <meta charset="UTF-8">   
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    <title>Document</title>
+</head>
+
+<body>    <h1>Lista de Tarefas do João</h1>    <input type="text" id="tarefa" placeholder="Digite uma nova tarefa">   
+    <button onclick="adicionarTarefa()">Adicionar Tarefa</button>    <ul id="listaTarefas"></ul>    <button
+        onclick="exibirTarefas()">Exibir Tarefas</button>   
+    <script>        const tarefas = []; function adicionarTarefa() { const inputTarefa = document.getElementById("tarefa"); const novaTarefa = inputTarefa.value; if (novaTarefa !== "") { tarefas.push(novaTarefa); inputTarefa.value = ""; } } function exibirTarefas() { const listaTarefas = document.getElementById("listaTarefas"); listaTarefas.innerHTML = ""; for (let i = 0; i < tarefas.length; i++) { const tarefaItem = document.createElement("li"); tarefaItem.textContent = tarefas[i]; listaTarefas.appendChild(tarefaItem); } }    </script>
+</body>
+
+</html>
